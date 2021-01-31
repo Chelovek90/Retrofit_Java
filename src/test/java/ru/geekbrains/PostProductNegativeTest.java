@@ -50,7 +50,7 @@ public class PostProductNegativeTest {
     @Test
     void createProductInElectronicCategoryWithIdTest() {
         Response<Product> response = productService.createProduct(productWithId).execute();
-        assertThat(response.isSuccessful(), is(false));
+        assertThat(response.code(), is(400));
     }
 
     @SneakyThrows

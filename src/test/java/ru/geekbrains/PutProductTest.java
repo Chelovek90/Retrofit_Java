@@ -59,7 +59,10 @@ public class PutProductTest {
                 .withPrice((int) (Math.random() * 1000));
 
         modifyWithoutDataProduct = new Product()
-                .withId(id);
+                .withId(id)
+                .withTitle(null)
+                .withCategoryTitle(null)
+                .withPrice(null);
     }
 
     @SneakyThrows
@@ -73,7 +76,7 @@ public class PutProductTest {
     @Test
     void modifyProductNotIdNegativeTest() {
         Response<Product> response = productService.modifyProduct(product).execute();
-        assertThat(response.isSuccessful(), is(false));
+        assertThat(response.code(), is(400));
     }
 
     @SneakyThrows
