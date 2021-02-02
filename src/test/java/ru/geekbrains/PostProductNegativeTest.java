@@ -46,7 +46,7 @@ public class PostProductNegativeTest {
         productNullData = new Product()
                 .withTitle("")
                 .withCategoryTitle("");
-        productPriceString = new Product()
+        productPriceString = new ProductPriceString()
                 .withId((int) (Math.random() * 1000))
                 .withTitle(faker.app().name())
                 .withCategoryTitle(ELECTRONIC.title)
@@ -78,8 +78,8 @@ public class PostProductNegativeTest {
     @SneakyThrows
     @Test
     void createProductPriceStringNegativePriceTest() {
-        Response<Product> response = productService.createProductPriceString(productPriceString).execute();
-        assertThat(response.isSuccessful(), is(false));
+        Response<ProductPriceString> response = productService.createProductPriceString(productPriceString).execute();
+        assertThat(response.code(), is(400));
     }
 
 }
