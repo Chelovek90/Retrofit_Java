@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import retrofit2.Response;
 import ru.geekbrains.dto.Product;
+import ru.geekbrains.dto.ProductPriceString;
 import ru.geekbrains.service.ProductService;
 import ru.geekbrains.util.RetrofitUtils;
 
@@ -23,6 +24,7 @@ public class PostProductNegativeTest {
     Product productWithId;
     Product productWithNegativePrice;
     Product productNullData;
+    ProductPriceString productPriceString;
     Faker faker = new Faker();
 
     @BeforeAll
@@ -44,6 +46,11 @@ public class PostProductNegativeTest {
         productNullData = new Product()
                 .withTitle("")
                 .withCategoryTitle("");
+        productPriceString = new Product()
+                .withId((int) (Math.random() * 1000))
+                .withTitle(faker.app().name())
+                .withCategoryTitle(ELECTRONIC.title)
+                .withPrice(faker.app().name());
     }
 
     @SneakyThrows
@@ -66,6 +73,13 @@ public class PostProductNegativeTest {
     void createProductNullDataNegativePriceTest() {
         Response<Product> response = productService.createProduct(productNullData).execute();
         assertThat(response.code(), is(500));
+    }
+
+    @SneakyThrows
+    @Test
+    void createProductPriceStringNegativePriceTest() {
+        Response<Product> response = productService.createProductPriceString(productPriceString).execute();
+        assertThat(response.isSuccessful(), is(false));
     }
 
 }

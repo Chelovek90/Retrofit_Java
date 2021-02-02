@@ -4,6 +4,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 import ru.geekbrains.dto.Product;
+import ru.geekbrains.dto.ProductPriceString;
 
 public interface ProductService {
 
@@ -12,6 +13,9 @@ public interface ProductService {
 
     @POST("products")
     Call<Product> createProduct(@Body Product createProductRequest);
+
+    @POST("products")
+    Call<ProductPriceString> createProductPriceString(@Body ProductPriceString createProductRequest);
 
     @PUT("products")
     Call<Product> modifyProduct(@Body Product modifyProductRequest);
