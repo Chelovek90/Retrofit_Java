@@ -2,13 +2,12 @@ package ru.geekbrains;
 
 import com.github.javafaker.Faker;
 import lombok.SneakyThrows;
-import okhttp3.ResponseBody;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import retrofit2.Response;
 import ru.geekbrains.dto.Product;
+import ru.geekbrains.dto.ProductPriceFloat;
 import ru.geekbrains.dto.ProductPriceString;
 import ru.geekbrains.service.ProductService;
 import ru.geekbrains.util.RetrofitUtils;
@@ -16,7 +15,6 @@ import ru.geekbrains.util.RetrofitUtils;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static ru.geekbrains.baseEnums.Category.ELECTRONIC;
-import static ru.geekbrains.baseEnums.Category.FOOD;
 
 public class PostProductNegativeTest {
 
@@ -25,6 +23,7 @@ public class PostProductNegativeTest {
     Product productWithNegativePrice;
     Product productNullData;
     ProductPriceString productPriceString;
+    ProductPriceFloat productPriceFloat;
     Faker faker = new Faker();
 
     @BeforeAll
@@ -47,10 +46,13 @@ public class PostProductNegativeTest {
                 .withTitle("")
                 .withCategoryTitle("");
         productPriceString = new ProductPriceString()
-                .withId((int) (Math.random() * 1000))
                 .withTitle(faker.app().name())
                 .withCategoryTitle(ELECTRONIC.title)
                 .withPrice(faker.app().name());
+        productPriceFloat = new ProductPriceFloat()
+                .withTitle(faker.app().name())
+                .withCategoryTitle(ELECTRONIC.title)
+                .withPrice(2.3f);
     }
 
     @SneakyThrows
@@ -80,6 +82,13 @@ public class PostProductNegativeTest {
     void createProductPriceStringNegativePriceTest() {
         Response<ProductPriceString> response = productService.createProductPriceString(productPriceString).execute();
         assertThat(response.code(), is(400));
+    }
+
+    @SneakyThrows
+    @Test
+    void createProductPriceFloatNegativePriceTest() {
+        Response<ProductPriceFloat> response = productService.createProductPriceFloat(productPriceFloat).execute();
+        assertThat("Product created with not correct price", response.code(), is(400));
     }
 
 }
