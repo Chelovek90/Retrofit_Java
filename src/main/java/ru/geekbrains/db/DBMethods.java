@@ -1,11 +1,10 @@
-package ru.geekbrains;
+package ru.geekbrains.db;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.jupiter.api.Test;
 import ru.geekbrains.db.dao.CategoriesMapper;
 import ru.geekbrains.db.dao.ProductsMapper;
 import ru.geekbrains.db.model.CategoriesExample;

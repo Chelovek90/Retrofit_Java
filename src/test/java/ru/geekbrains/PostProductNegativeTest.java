@@ -16,7 +16,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static ru.geekbrains.baseEnums.Category.ELECTRONIC;
 
-public class PostProductNegativeTest {
+public class PostProductNegativeTest extends CleanTestDataBase{
 
     static ProductService productService;
     Product productWithId;

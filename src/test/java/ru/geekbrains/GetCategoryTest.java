@@ -14,7 +14,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static ru.geekbrains.baseEnums.Category.FOOD;
 
-public class GetCategoryTest {
+public class GetCategoryTest extends CleanTestDataBase{
 
     static CategoryService categoryService;
 

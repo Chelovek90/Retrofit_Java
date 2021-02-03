@@ -29,7 +29,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @Slf4j
-public class ProductDbTest {
+public class ProductDbTest extends CleanTestDataBase{
     Integer productId;
     static ProductsMapper productsMapper;
     static ProductService productService;

@@ -16,7 +16,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static ru.geekbrains.baseEnums.Category.FOOD;
 
-public class DeleteProduct {
+public class DeleteProduct extends CleanTestDataBase {
     static ProductService productService;
     Product product;
     Faker faker = new Faker();

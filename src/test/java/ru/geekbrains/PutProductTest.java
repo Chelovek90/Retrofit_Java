@@ -19,7 +19,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static ru.geekbrains.baseEnums.Category.ELECTRONIC;
 import static ru.geekbrains.baseEnums.Category.FOOD;
 
-public class PutProductTest {
+public class PutProductTest extends CleanTestDataBase{
 
     static ProductService productService;
     Product product;
