@@ -9,7 +9,7 @@
 
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <jdbcConnection driverClass="org.postgresql.Driver"
-                        connectionURL="jdbc:postgresql://80.78.248.82:5432/coursedb"
+                        connectionURL="jdbc:postgresql://80.78.248.82:5434/coursedb"
                         userId="postgres"
                         password="postgres">
         </jdbcConnection>
@@ -18,7 +18,7 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="ru.geekbrains.java4.lesson6.db.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="ru.geekbrains.db.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>

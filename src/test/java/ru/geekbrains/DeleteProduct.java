@@ -22,9 +22,6 @@ public class DeleteProduct {
     Faker faker = new Faker();
     int id;
 
-
-
-
     @SneakyThrows
     @BeforeAll
     static void beforeAll() {
@@ -45,7 +42,7 @@ public class DeleteProduct {
     @SneakyThrows
     @Test
     void deleteProductNotCorrectId() {
-        Response<ResponseBody> response = productService.deleteProduct(-1).execute();
+        Response<ResponseBody> response = productService.deleteProduct(26).execute();
         assertThat(response.code(), is(500));
     }
 
